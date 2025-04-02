@@ -1,8 +1,10 @@
 
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, ChevronRight, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 interface IcoCardProps {
+  id: string;
   name: string;
   twitterHandle: string;
   description: string;
@@ -14,6 +16,7 @@ interface IcoCardProps {
 }
 
 const IcoCard = ({
+  id,
   name,
   twitterHandle,
   description,
@@ -103,10 +106,13 @@ const IcoCard = ({
           <p className="text-xs text-muted-foreground truncate w-3/4">
             {walletAddress.slice(0, 6)}...{walletAddress.slice(-6)}
           </p>
-          <button className="text-solana-green hover:text-solana-purple transition-colors flex items-center text-sm gap-1">
+          <Link 
+            to={`/project/${id}`}
+            className="text-solana-green hover:text-solana-purple transition-colors flex items-center text-sm gap-1"
+          >
             Details
             <ChevronRight className="h-4 w-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
